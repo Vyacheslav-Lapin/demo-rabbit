@@ -1,6 +1,5 @@
 package ru.vlapin.demo.demorabbit.config;
 
-import static ru.vlapin.demo.demorabbit.common.Loggable.LogLevel.DEBUG;
 import static ru.vlapin.demo.demorabbit.common.Loggable.LogLevel.INFO;
 
 import java.util.stream.Stream;
@@ -12,8 +11,8 @@ import ru.vlapin.demo.demorabbit.common.Loggable;
 import ru.vlapin.demo.demorabbit.dao.CatRepository;
 import ru.vlapin.demo.demorabbit.model.Cat;
 
-@Loggable(INFO)
 @Component
+@Loggable(INFO)
 @RequiredArgsConstructor
 public class DataJpaIniter implements ApplicationRunner {
 

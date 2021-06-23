@@ -12,7 +12,7 @@ import ru.vlapin.demo.demorabbit.model.ToDo;
 @RequiredArgsConstructor
 public class ToDoConsumer {
 
-  private ToDoRepository repository;
+  ToDoRepository repository;
 
   @RabbitListener(queues = "${todo.amqp.queue}")
   public void processToDo(ToDo todo) {

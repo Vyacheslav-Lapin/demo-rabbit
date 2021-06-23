@@ -15,6 +15,6 @@ public class ToDoProducer {
 
   public void sendTo(String queue, ToDo toDo){
     template.convertAndSend(queue, toDo);
-    log.info("Producer> Message Sent");
+    log.info("Producer > Message Sent ({})", toDo);
   }
 }

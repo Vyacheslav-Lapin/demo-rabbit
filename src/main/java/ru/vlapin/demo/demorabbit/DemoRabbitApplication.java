@@ -34,8 +34,7 @@ public class DemoRabbitApplication {
   }
 
   @Bean
-  public SimpleRabbitListenerContainerFactory
-  rabbitListenerContainerFactory(ConnectionFactory connectionFactory) {
+  public SimpleRabbitListenerContainerFactory rabbitListenerContainerFactory(ConnectionFactory connectionFactory) {
     val factory = new SimpleRabbitListenerContainerFactory();
     factory.setConnectionFactory(connectionFactory);
     factory.setMessageConverter(new Jackson2JsonMessageConverter());
@@ -57,6 +56,6 @@ public class DemoRabbitApplication {
   @Bean
   public CommandLineRunner sendToDos(@Value("${todo.amqp.queue}") String destination,
                                      ToDoProducer producer) {
-    return args -> producer.sendTo(destination, new ToDo("workout tomorrow morning!"));
+    return __ -> producer.sendTo(destination, new ToDo("workout tomorrow morning!"));
   }
 }
