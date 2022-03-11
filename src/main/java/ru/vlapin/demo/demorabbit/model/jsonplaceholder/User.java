@@ -1,20 +1,30 @@
 package ru.vlapin.demo.demorabbit.model.jsonplaceholder;
 
-import static lombok.AccessLevel.PRIVATE;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
 
-import lombok.Data;
-import lombok.Setter;
-
-@Data
-@Setter(PRIVATE)
+@Value
+@Jacksonized
+@Builder(toBuilder = true)
 public class User {
 
   Long id;
+
   String name;
-  String username;
+
+  @JsonProperty("username")
+  String userName;
+
   String email;
+
   Address address;
+
   String phone;
-  String website;
+
+  @JsonProperty("website")
+  String webSite;
+
   Company company;
 }

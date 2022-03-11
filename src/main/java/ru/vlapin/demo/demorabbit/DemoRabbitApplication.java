@@ -10,7 +10,6 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
@@ -19,9 +18,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
-import ru.vlapin.demo.demorabbit.model.ToDo;
-import ru.vlapin.demo.demorabbit.service.ToDoProducer;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
+@EnableScheduling
 @EnableFeignClients
 @SpringBootApplication
 @ConfigurationPropertiesScan
@@ -51,11 +50,5 @@ public class DemoRabbitApplication {
   @Bean
   public Queue queueCreation(@Value("${todo.amqp.queue}") String queue) {
     return new Queue(queue, true, false, false);
-  }
-
-  @Bean
-  public CommandLineRunner sendToDos(@Value("${todo.amqp.queue}") String destination,
-                                     ToDoProducer producer) {
-    return __ -> producer.sendTo(destination, new ToDo("workout tomorrow morning!"));
   }
 }

@@ -1,12 +1,12 @@
 package ru.vlapin.demo.demorabbit.model.jsonplaceholder;
 
-import static lombok.AccessLevel.PRIVATE;
+import lombok.Builder;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
 
-import lombok.Data;
-import lombok.Setter;
-
-@Data
-@Setter(PRIVATE)
+@Value
+@Jacksonized
+@Builder(toBuilder = true)
 public class Photo {
 
   Long albumId;

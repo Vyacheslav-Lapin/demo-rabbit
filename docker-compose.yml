@@ -1,5 +1,5 @@
 rabbit:
-  container_name: dev_rabbit
+  container_name: dev_rabbit2
   hostname: rabbit
   image: rabbitmq:3-management
   environment:

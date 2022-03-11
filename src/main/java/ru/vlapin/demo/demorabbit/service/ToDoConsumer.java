@@ -14,7 +14,7 @@ public class ToDoConsumer {
 
   ToDoRepository repository;
 
-  @RabbitListener(queues = "${todo.amqp.queue}")
+  @RabbitListener(queues = "${todo.amqp.queue:demo}")
   public void processToDo(ToDo todo) {
     log.info("Consumer> {}", todo);
     log.info("ToDo created> {}", repository.save(todo));
